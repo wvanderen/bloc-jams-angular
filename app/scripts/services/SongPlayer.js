@@ -48,6 +48,17 @@
     * @desc Returns index for current song in album
     * @param {object} song
     */
+
+    /**
+    * @function stopSong
+    * @desc Stops song and sets playing property to null
+    * @param {object} song
+    */
+    var stopSong = function(song){
+      currentBuzzObject.stop();
+      song.playing = null;
+    }
+
     var getSongIndex = function(song) {
       return currentAlbum.songs.indexOf(song);
     }
@@ -85,8 +96,7 @@
       currentSongIndex--;
 
       if (currentSongIndex < 0) {
-        currentBuzzObject.stop();
-        SongPlayer.currentSong.playing = null;
+        stopSong(song);
       } else {
         var song = currentAlbum.songs[currentSongIndex];
         setSong(song);
@@ -94,6 +104,22 @@
       }
     };
 
+    /**
+    * @function Songplayer.next
+    * @desc Increments currentSongIndex and navigates to next song
+    */
+    SongPlayer.next = function() {
+      var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+      currentSongIndex++;
+
+      if (currentSongIndex >= currentAlbum.songs.length) {
+        stopSong(song);
+      } else {
+        var song = currentAlbum.songs[currentSongIndex];
+        setSong(song);
+        playSong(song);
+      }
+    };
     /**
     * @function SongPlayer.pause
     * @desc Pauses the song and sets the playing property to false
