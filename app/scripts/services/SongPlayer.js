@@ -106,6 +106,7 @@
     * @desc Decrements currentSongIndex and navigates to previous song
     */
     SongPlayer.previous = function() {
+      song = song || SongPlayer.currentSong;
       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
       currentSongIndex--;
 
@@ -123,6 +124,7 @@
     * @desc Increments currentSongIndex and navigates to next song
     */
     SongPlayer.next = function() {
+      song = song || SongPlayer.currentSong;
       var currentSongIndex = getSongIndex(SongPlayer.currentSong);
       currentSongIndex++;
 
