@@ -81,6 +81,8 @@
     */
     SongPlayer.currentTime = null;
 
+
+    SongPlayer.volume = 80;
     /**
     * @function SongPlayer.play
     * @desc Checks to see if current song is equal to the selected song. If it isn't, it plays it. If it is, we make sure the song is paused, then play it
@@ -151,6 +153,12 @@
     SongPlayer.setCurrentTime = function(time) {
       if (currentBuzzObject) {
         currentBuzzObject.setTime(time);
+      }
+    };
+
+    SongPlayer.setVolume = function(volume) {
+      if (currentBuzzObject) {
+        currentBuzzObject.setVolume(volume)
       }
     };
 
